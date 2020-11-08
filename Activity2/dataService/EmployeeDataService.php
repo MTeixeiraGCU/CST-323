@@ -97,7 +97,7 @@ class EmployeeDataService
             while($employee = $result->fetch_assoc()) {
                 array_push($employees, $employee);
             }
-            return $employee;
+            return $employees;
         }
     }
     

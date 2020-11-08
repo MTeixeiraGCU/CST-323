@@ -15,8 +15,15 @@ Description:
     //used to tell the user if something has occured
     $mainMessage = "";
     
-    $bs = new EmployeeBusinessService();
-    $bs->getAllEmployees();
+    //check for a logged in user
+    if(isset($_SESSION['User_ID']) && $_SESSION['User_ID'] > -1){
+        //$bs = new EmployeeBusinessService();
+        //$employees = $bs->getAllEmployees();
+    }
+    else {
+        //They must login first
+        $mainMessage = "You must login to search for employees!";
+    }
     
 ?>
     

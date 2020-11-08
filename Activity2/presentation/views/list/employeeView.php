@@ -25,7 +25,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/presentation/handlers/employeeViewHandler.
 </div>
 
 <?php 
-
+    if(isset($employees)) {
+        include '_displayEmployeeList.php';
+    }
 ?>
 
 <!-- footer -->
