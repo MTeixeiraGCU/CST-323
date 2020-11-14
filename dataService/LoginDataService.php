@@ -17,19 +17,19 @@ class LoginDataService
         
         $conn = $db->getConnection();
         
-        $stmt = mysqli_prepare($conn,"SELECT * FROM users WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?");
+        if($stmt = mysqli_prepare($conn,"SELECT * FROM users WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?")) {
         
-        if(!$stmt) {
+            mysqli_bind_param($stmt,"ss", $userName, $password);
+            mysqli_stmt_execute($stmt);
+            $result = $stmt->get_result();
+            mysqli_stmt_close($stmt);
+            
+        } else {
+            
             echo "SQL error during query set up for login.";
+            mysqli_close($conn);
             exit();
         }
-        
-        mysqli_bind_param($stmt,"ss", $userName, $password);
-        mysqli_stmt_execute($stmt);
-        
-        $result = $stmt->get_result();
-        
-        mysqli_stmt_close($stmt);
         
         if(!$result) {
             $conn->close();
