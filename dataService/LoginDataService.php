@@ -24,6 +24,7 @@ class LoginDataService
             mysqli_stmt_execute($stmt);
             $result = $stmt->get_result();
             mysqli_stmt_close($stmt);
+            echo "login finished!";
             
         } else {
             
@@ -33,15 +34,15 @@ class LoginDataService
         }
         
         if(!$result) {
-            $conn->close();
+            mysqli_close($conn);
             return -1;
         }
         else if($result->num_rows == 1) {
-            $conn->close();
+            mysqli_close($conn);
             return $result->fetch_assoc()["ID"];
         }
         else {
-            $conn->close();
+            mysqli_close($conn);
             return -1;
         }
     }
