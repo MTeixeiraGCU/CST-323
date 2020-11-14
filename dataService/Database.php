@@ -23,7 +23,7 @@ class Database
         mysqli_real_connect($this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
         
         if(mysqli_connect_errno($conn)) {
-            echo "Connection failed " . $conn->connect_error . "<br>";
+            die("Connection failed " . $conn->connect_error . "<br>");
         }
         else {
             return $conn;
