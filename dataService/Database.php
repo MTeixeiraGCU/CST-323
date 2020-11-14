@@ -13,7 +13,7 @@ class Database
     //properties
     private $dbServerName = "localhost";
     private $dbUsername = "root";
-    private $dbPassword = "root";
+    private $dbPassword = "CST323root";
     private $dbName = "cst323_activities";
     
     //methods
@@ -23,7 +23,7 @@ class Database
         mysqli_real_connect($conn, $this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
         
         if(mysqli_connect_errno($conn)) {
-            die("Connection failed " . $conn->connect_error . "<br>");
+            die("Connection failed! " . $conn->connect_error . "<br>");
         }
         else {
             return $conn;
