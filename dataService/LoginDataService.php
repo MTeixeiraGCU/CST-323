@@ -17,7 +17,7 @@ class LoginDataService
         
         $conn = $db->getConnection();
         
-        $stmt = mysqli_prepare($conn,"SELECT * FROM `users` WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?");
+        $stmt = mysqli_prepare($conn,"SELECT * FROM users WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?");
         
         if(!$stmt) {
             echo "SQL error during query set up for login.";
