@@ -11,7 +11,7 @@
 class Database
 {
     //properties
-    private $dbServerName = "localhost";
+    private $dbServerName = "MYSQLCONNSTR_localdb";
     private $dbUsername = "root";
     private $dbPassword = "root";
     private $dbName = "cst323_activities";
