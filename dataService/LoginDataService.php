@@ -17,17 +17,12 @@ class LoginDataService
         
         $conn = $db->getConnection();
         
-        echo "In Login";
         if($stmt = mysqli_prepare($conn,"SELECT * FROM users WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?")) {
         
             mysqli_stmt_bind_param($stmt,"ss", $userName, $password);
-            echo "login finished!1";
             mysqli_stmt_execute($stmt);
-            echo "login finished!2";
             $result = $stmt->get_result();
-            echo "login finished!3";
             mysqli_stmt_close($stmt);
-            echo "login finished!4";
             
         } else {
             

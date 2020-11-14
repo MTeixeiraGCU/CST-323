@@ -27,7 +27,6 @@ class Database
             die("Connection failed! " . $conn->connect_error . "<br>");
         }
         else {
-            echo "Connection established!";
             return $conn;
         }
     }
