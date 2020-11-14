@@ -12,9 +12,9 @@ class Database
 {
     //properties
     private $dbServerName = "localhost";
-    private $dbUsername = "azure";
-    private $dbPassword = "6#vWHD_$";
-    private $dbName = "localdb";
+    private $dbUsername = "root";
+    private $dbPassword = "CST323root";
+    private $dbName = "cst323_activities";
     
     //methods
     public function getConnection() {
