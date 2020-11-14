@@ -17,6 +17,7 @@ class LoginDataService
         
         $conn = $db->getConnection();
         
+        echo "In Login";
         if($stmt = mysqli_prepare($conn,"SELECT * FROM users WHERE USERNAME LIKE ? AND PASSWORD LIKE BINARY ?")) {
         
             mysqli_bind_param($stmt,"ss", $userName, $password);
