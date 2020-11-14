@@ -14,13 +14,14 @@ class Database
     private $dbServerName = "localhost";
     private $dbUsername = "azure";
     private $dbPassword = "6#vWHD_$";
-    private $dbName = "cst323_activities";
+    private $dbName = "localdb";
     
     //methods
     public function getConnection() {
         $conn = mysqli_init();
         
         mysqli_real_connect($conn, $this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
+        mysqli_real_connect
         
         if(mysqli_connect_errno($conn)) {
             die("Connection failed! " . $conn->connect_error . "<br>");
