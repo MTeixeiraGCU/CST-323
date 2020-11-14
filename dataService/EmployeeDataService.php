@@ -14,23 +14,27 @@ class EmployeeDataService
     public function findByFirstName($pattern) {
         
         $db = new Database();
-        $connection = $db->getConnection();
-        $stmt = $connection->prepare("SELECT ID, FIRST_NAME, LAST_NAME, POSITION FROM employees WHERE FIRST_NAME LIKE ?");
+        $conn = $db->getConnection();
+        $stmt = mysqli_prepare($conn, "SELECT ID, FIRST_NAME, LAST_NAME, POSITION FROM employees WHERE FIRST_NAME LIKE ?");
         
         if(!$stmt) {
-            echo "SQL error during search set up.";
+            echo "SQL error during search set up by employee first name.";
+            mysqli_close($conn);
             exit();
         }
         
         $like_pattern = "%" . $pattern . "%";
-        $stmt->bind_param("s", $like_pattern);
+        mysqli_bind_param($stmt,"s", $like_pattern);
         
-        $stmt->execute();
+        mysqli_execute($stmt);
         
-        $result = $stmt->get_result();
+        $result = mysqli_stmt_get_result($stmt);
+        
+        mysqli_stmt_close($stmt);
         
         if(!$result) {
-            echo "SQL error during results.";
+            echo "SQL error during results for employee first name search.";
+            mysqli_close($conn);
             return null;
             exit();
         }
@@ -40,6 +44,7 @@ class EmployeeDataService
             while($user = $result->fetch_assoc()) {
                 array_push($userArray, $user);
             }
+            mysqli_close($conn);
             return $userArray;
         }
     }
@@ -47,22 +52,26 @@ class EmployeeDataService
     public function findByID($id) {
             
         $db = new Database();
-        $connection = $db->getConnection();
-        $stmt = $connection->prepare("SELECT ID, FIRST_NAME, LAST_NAME, POSITION FROM employees WHERE ID LIKE ?");
+        $conn = $db->getConnection();
+        $stmt = mysqli_prepare($conn,"SELECT ID, FIRST_NAME, LAST_NAME, POSITION FROM employees WHERE ID LIKE ?");
         
         if(!$stmt) {
-            echo "SQL error during search set up.";
+            echo "SQL error during search set up for employee by ID.";
+            mysqli_close($conn);
             exit();
         }
         
-        $stmt->bind_param("s", $id);
+        mysqli_stmt_bind_param($stmt, "s", $id);
         
-        $stmt->execute();
+        mysqli_stmt_execute($stmt);
         
-        $result = $stmt->get_result();
+        $result = mysqli_stmt_get_result($stmt);
+        
+        mysqli_stmt_close($stmt);
         
         if(!$result) {
-            echo "SQL error during results.";
+            echo "SQL error during results for employee by ID.";
+            mysqli_close($conn);
             return null;
             exit();
         }
@@ -74,20 +83,22 @@ class EmployeeDataService
     public function getAllEmployees() {
         
         $db = new Database();
-        $connection = $db->getConnection();
-        $stmt = $connection->prepare("SELECT * FROM employees");
+        $conn = $db->getConnection();
+        $stmt = mysqli_prepare($conn,"SELECT * FROM employees");
         
         if(!$stmt) {
-            echo "SQL error during search set up.";
+            echo "SQL error during search set up for get all employees.";
+            mysqli_close($conn);
             exit();
         }
         
-        $stmt->execute();
+        mysqli_stmt_execute($stmt);
         
-        $result = $stmt->get_result();
+        $result = mysqli_stmt_get_result($stmt);
         
         if(!$result) {
-            echo "SQL error during results.";
+            echo "SQL error during results for get all employees.";
+            mysqli_close($conn);
             return null;
             exit();
         }
