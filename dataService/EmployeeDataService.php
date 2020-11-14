@@ -24,7 +24,7 @@ class EmployeeDataService
         }
         
         $like_pattern = "%" . $pattern . "%";
-        mysqli_bind_param($stmt,"s", $like_pattern);
+        mysqli_stmt_bind_param($stmt,"s", $like_pattern);
         
         mysqli_execute($stmt);
         
