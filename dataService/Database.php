@@ -15,12 +15,13 @@ class Database
     private $dbUsername = "root";
     private $dbPassword = "CST323root";
     private $dbName = "cst323_activities";
+    private $dbPort = "49759";
     
     //methods
     public function getConnection() {
         $conn = mysqli_init();
         
-        mysqli_real_connect($conn, $this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
+        mysqli_real_connect($conn, $this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName, $this->dbPort);
         
         if(mysqli_connect_errno($conn)) {
             die("Connection failed! " . $conn->connect_error . "<br>");
