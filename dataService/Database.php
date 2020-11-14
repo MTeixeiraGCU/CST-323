@@ -11,9 +11,9 @@
 class Database
 {
     //properties
-    private $dbServerName = "localhost";
-    private $dbUsername = "root";
-    private $dbPassword = "CST323root";
+    private $dbServerName = "localdb";
+    private $dbUsername = "azure";
+    private $dbPassword = "6#vWHD_$";
     private $dbName = "cst323_activities";
     
     //methods
