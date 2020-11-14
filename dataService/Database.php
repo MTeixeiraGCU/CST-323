@@ -18,10 +18,12 @@ class Database
     
     //methods
     public function getConnection() {
-        $conn = new mysqli($this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
+        $conn = mysqli_init();
         
-        if($conn->connect_error) {
-            echo "Connection failed " .$conn->connect_error . "<br>";
+        mysqli_real_connect($this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
+        
+        if(mysqli_connect_errno($conn)) {
+            echo "Connection failed " . $conn->connect_error . "<br>";
         }
         else {
             return $conn;
