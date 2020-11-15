@@ -11,7 +11,9 @@ Description:
 -->
 
 <?php
+echo "handler 3";
     include_once $_SERVER['DOCUMENT_ROOT'] . '/utility/header.php';
+    echo "handler 4";
     require_once $_SERVER['DOCUMENT_ROOT'] . '/Autoloader.php';
     
     // define error message variables and set to empty values
