@@ -37,7 +37,9 @@ Description:
         
         if($_SESSION['loginAttempts'] > 1 && $ready) {   //ready to attempt another login
             
+            echo "handler 1";
             $bs = new EmployeeBusinessService();
+            echo "handler 2";
             $_SESSION['User_ID'] = $bs->loginUser($user->getName(), $user->getPassword());
             
             if($_SESSION['User_ID'] > -1) {  //successful login
