@@ -14,27 +14,27 @@ spl_autoload_register(function($class) {
     }
     
     //count the number of slashes
-    $numberOfLastDirectories = substr_count($lastDirectories, '\\');
+    $numberOfLastDirectories = substr_count($lastDirectories, '/');
     
     if($debug) {
         echo "number of directories different = : " . $numberOfLastDirectories . " <br>";
     }
     
     //look up locations for class in this app
-    $directories = ['businessService', 'businessService\model', 'dataService', 'presentation', 'presentation\handlers', 'presentation\views', 'presentation\views\login', 'utility'];
+    $directories = ['businessService', 'businessService/model', 'dataService', 'presentation', 'presentation/handlers', 'presentation/views', 'presentation/views/login', 'utility'];
     
     //look up each directory for the class we need
     foreach($directories as $dir) {
         $curDirectory = $dir;
         for($x = 0;$x < $numberOfLastDirectories;$x++) {
-            $curDirectory = "..\\" . $curDirectory;
+            $curDirectory = "../" . $curDirectory;
         }
-        $classfile = $curDirectory . '\\' . $class . '.php';
+        $classfile = $curDirectory . '/' . $class . '.php';
         
         if(is_readable($classfile)) {
-            if(require $dir . '\\' . $class . ".php") {
+            if(require $dir . '/' . $class . ".php") {
                 if($debug) {
-                    echo $dir . '\\' . $class . ".php";
+                    echo $dir . '/' . $class . ".php";
                 }
                 break;
             }
