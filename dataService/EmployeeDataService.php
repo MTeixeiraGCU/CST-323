@@ -84,21 +84,23 @@ class EmployeeDataService
         
         $db = new Database();
         $conn = $db->getConnection();
-        $stmt = mysqli_prepare($conn,"SELECT * FROM employees");
+        $stmt = $conn->prepare("SELECT * FROM employees");
         
         if(!$stmt) {
             echo "SQL error during search set up for get all employees.";
-            mysqli_close($conn);
+            $conn->close();
             exit();
         }
         
-        mysqli_stmt_execute($stmt);
+        $stmt->execute();
         
-        $result = mysqli_stmt_get_result($stmt);
+        $result = $stmt->get_result();
+        $stmt->close();
+        
         
         if(!$result) {
             echo "SQL error during results for get all employees.";
-            mysqli_close($conn);
+            $conn->close();
             return null;
             exit();
         }

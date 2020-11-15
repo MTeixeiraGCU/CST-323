@@ -15,19 +15,15 @@ class Database
     private $dbUsername = "ire6vekgfa7mk6kp";
     private $dbPassword = "pi64ew7ktqlzmaja";
     private $dbName = "moq9tr12xpvg1f4e";
-    private $dbPort = "3306";
     
     //methods
     public function getConnection() {
-        $conn = mysqli_init();
+        $conn = new mysqli($this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
         
-        mysqli_real_connect($conn, $this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName, $this->dbPort);
-        
-        if(mysqli_connect_errno($conn)) {
+        if($conn->connect_error) {
             die("Connection failed! " . $conn->connect_error . "<br>");
         }
         else {
-            echo "Test";
             return $conn;
         }
     }
