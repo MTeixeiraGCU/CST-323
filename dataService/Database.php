@@ -18,8 +18,9 @@ class Database
     
     //methods
     public function getConnection() {
+        echo "Test 1";
         $conn = new mysqli($this->dbServerName, $this->dbUsername, $this->dbPassword, $this->dbName);
-        
+        echo "Test 2";
         if($conn->connect_error) {
             die("Connection failed! " . $conn->connect_error . "<br>");
         }
