@@ -11,11 +11,11 @@
 class Database
 {
     //properties
-    private $dbServerName = "localhost";
-    private $dbUsername = "azure";
-    private $dbPassword = "6#vWHD_$";
-    private $dbName = "cst323_activities";
-    private $dbPort = "49759";
+    private $dbServerName = "qn66usrj1lwdk1cc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+    private $dbUsername = "ire6vekgfa7mk6kp";
+    private $dbPassword = "pi64ew7ktqlzmaja";
+    private $dbName = "moq9tr12xpvg1f4e";
+    private $dbPort = "3306";
     
     //methods
     public function getConnection() {
