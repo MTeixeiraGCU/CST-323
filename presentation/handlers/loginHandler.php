@@ -11,32 +11,30 @@ Description:
 -->
 
 <?php
-echo "handler 3";
     include_once $_SERVER['DOCUMENT_ROOT'] . '/utility/header.php';
-    echo "handler 4";
     require_once $_SERVER['DOCUMENT_ROOT'] . '/Autoloader.php';
-    
+    echo "handler 3";
     // define error message variables and set to empty values
     $userNameErr = $passwordErr = "";
     $loginMessageErr = "";
     
     //check each of the required fields and populate thier error message as necessary.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
+        echo "handler 4";
         $ready = true; //we have been through the form at least once and need to populate it with values
-        
+        echo "handler 5";
         $user = new User(-1, $_POST["LoginUserName"], $_POST["LoginPassword"]);
-        
+        echo "handler 6";
         if (empty($user->getName())) {
             $userNameErr = "* User Name is required!";
             $ready = false;
         }
-        
+        echo "handler 7";
         if(empty($user->getPassword())) {
             $passwordErr = "* Password is a required field!";
             $ready = false;
         }
-        
+        echo "handler 8";
         if($_SESSION['loginAttempts'] > 1 && $ready) {   //ready to attempt another login
             
             echo "handler 1";
