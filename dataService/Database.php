@@ -11,10 +11,10 @@
 class Database
 {
     //properties
-    private $dbServerName = "localhost";
-    private $dbUsername = "root";
-    private $dbPassword = "root";
-    private $dbName = "cst323_activities";
+    private $dbServerName = "qn66usrj1lwdk1cc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+    private $dbUsername = "ire6vekgfa7mk6kp";
+    private $dbPassword = "pi64ew7ktqlzmaja";
+    private $dbName = "moq9tr12xpvg1f4e";
     private $dbPort = "3306";
     
     //methods
