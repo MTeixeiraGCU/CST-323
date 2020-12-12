@@ -25,8 +25,8 @@ class AbstractActivityLogger {
         $object->intercepted = $this;
         
         $this->logger = new Logger('activity_logger');
-        $this->logger->pushHandler(new StreamHandler($_SERVER['DOCUMENT_ROOT'] . '/activities.log', Logger::DEBUG));
-        $this->logger->info("created intercepter for " . get_class($object));
+        $this->logger->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+        $this->logger->info("created intercepter for " . get_class($object) . "\n");
     }
     
     public function callMethod($method, $args){
