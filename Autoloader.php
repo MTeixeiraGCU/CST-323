@@ -13,7 +13,7 @@ spl_autoload_register(function($class) {
         echo "lastDirectories = : " . $lastDirectories . " <br>";
     }
     
-    $slash = '/';
+    $slash = '//';
     
     //count the number of slashes
     $numberOfLastDirectories = substr_count($lastDirectories, $slash);
