@@ -23,6 +23,7 @@ Description:
     if ($_SERVER["REQUEST_METHOD"] == "POST") {  
          
         $user = new User(-1, $_POST["RegUserName"], $_POST["RegPassword"]);
+        $user = new ActivityLogger($user);
         $password2 = $_POST["RegPassword2"];
         
         $ready = true;
@@ -53,7 +54,7 @@ Description:
         
         if($ready) {
             $bs = new EmployeeBusinessService();
-            
+            $bs = new ActivityLogger($bs);
             //check for a duplicate user
             
             if(!$bs->checkUser($user->getName())) { //successful check of registration and move to next form

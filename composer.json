@@ -1,0 +1,6 @@
+{
+	"name" : "activities/activities",
+	"require" : {
+		"monolog/monolog" : "~2.1"
+	}
+}

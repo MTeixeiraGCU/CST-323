@@ -19,6 +19,7 @@ class EmployeeDataService
         
         if(!$stmt) {
             echo "SQL error during search set up by employee first name.";
+            ActivityLogger::error("SQL error during search set up by employee first name.");
             mysqli_close($conn);
             exit();
         }
@@ -34,6 +35,7 @@ class EmployeeDataService
         
         if(!$result) {
             echo "SQL error during results for employee first name search.";
+            ActivityLogger::error("SQL error during results for employee first name search.");
             mysqli_close($conn);
             return null;
             exit();

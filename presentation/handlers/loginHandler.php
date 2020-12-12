@@ -24,6 +24,7 @@ Description:
         $ready = true; //we have been through the form at least once and need to populate it with values
 
         $user = new User(-1, $_POST["LoginUserName"], $_POST["LoginPassword"]);
+        $user = new ActivityLogger($user);
 
         if (empty($user->getName())) {
             $userNameErr = "* User Name is required!";
@@ -39,7 +40,8 @@ Description:
             
 
             $bs = new EmployeeBusinessService();
-
+            $bs = new ActivityLogger($bs);
+            
             $_SESSION['User_ID'] = $bs->loginUser($user->getName(), $user->getPassword());
             
             if($_SESSION['User_ID'] > -1) {  //successful login

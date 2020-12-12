@@ -12,11 +12,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/Autoloader.php';
 
 class EmployeeBusinessService
 {
+    
     //methods
     public function findByID($id) {
-        $dbservice = new EmployeeDataService();
+        $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
         
-        $employee = $dbservice->findByID($id);
+        $employee = $dbService->findByID($id);
         
         return new Employee($id, $employee['FIRST_NAME'], $employee['LAST_NAME'], $employee['POSITION']);
     }
@@ -24,8 +26,10 @@ class EmployeeBusinessService
     public function findByFirstName($pattern) {
         $employees = array();
         
-        $dbservice = new EmployeeDataService();
-        $employees = $dbservice->findByFirstName($pattern);
+        $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
+        
+        $employees = $dbService->findByFirstName($pattern);
         
         return $employees;
     }
@@ -34,6 +38,8 @@ class EmployeeBusinessService
         $employees = array();
         
         $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
+        
         $employees = $dbService->getAllEmployees();
         
         return $employees;
@@ -41,6 +47,8 @@ class EmployeeBusinessService
     
     public function loginUser($userName, $password) {
         $dbService = new LoginDataService();
+        $dbService = new ActivityLogger($dbService);
+        
         $userID = $dbService->loginUser($userName, $password);
         
         return $userID;
@@ -48,16 +56,22 @@ class EmployeeBusinessService
     
     public function updateEmployee($id, $firstName, $lastName, $role){
         $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
+        
         return $dbService->updateUser($id, $firstName, $lastName, $role);
     }
     
     public function deleteEmployee($id) {
         $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
+        
         return $dbService->deleteUser($id);
     }
     
     public function insertEmployee($firstName, $lastName, $position){
         $dbService = new EmployeeDataService();
+        $dbService = new ActivityLogger($dbService);
+        
         return $dbService->insertUser($firstName, $lastName, $position);
     }
 }

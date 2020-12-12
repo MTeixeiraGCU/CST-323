@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         //insert the new user
         $bs = new EmployeeBusinessService();
+        $bs = new ActivityLogger($bs);
         
         $_SESSION['User_ID'] = $bs->insertUser($user->getName(), $user->getPassword(), $user->getRole());
         

@@ -18,6 +18,7 @@ Description:
     //check for a logged in user
     if(isset($_SESSION['User_ID']) && $_SESSION['User_ID'] > -1){
         $bs = new EmployeeBusinessService();
+        $bs = new ActivityLogger($bs);
         $employees = $bs->getAllEmployees();
     }
     else {
