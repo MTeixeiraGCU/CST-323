@@ -8,7 +8,7 @@ Date:         11/07/2020
 Description: This file contains all the required php and html to create the top header for each page in the application
  -->
 <?php
-    include_once 'header.php'
+    include_once $_SERVER['DOCUMENT_ROOT'] . 'header.php';
 ?>
 
 <!DOCTYPE html>
