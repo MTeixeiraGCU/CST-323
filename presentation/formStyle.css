@@ -202,7 +202,7 @@ body {
 /*navigation bar that goes under header for all pages*/
 .navbar {
   display: flex;
-  background-color: #c0c0c0;
+  background-color: #ff0000;
 }
 
 /*button styling for links on navigation bar*/
